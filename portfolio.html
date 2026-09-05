@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Manosh Ghosh | Developer, AI Innovator & Contractor</title>
+  <title>Manosh Ghosh | Enterprise Tech & Infrastructure</title>
   
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   
-  <!-- Google Fonts -->
+  <!-- Google Fonts: Inter & JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
   
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
@@ -24,39 +24,37 @@
       theme: {
         extend: {
           fontFamily: {
-            sans: ['Plus Jakarta Sans', 'sans-serif'],
+            sans: ['Inter', 'sans-serif'],
             mono: ['JetBrains Mono', 'monospace'],
           },
           colors: {
             brand: {
-              cyan: '#06b6d4',
-              amber: '#f59e0b',
-              emerald: '#10b981',
-              dark: '#050811',
-              card: '#0f1523',
+              bg: '#050a14',       /* Deep corporate navy/black */
+              surface: '#0f172a',  /* Slate 900 */
+              surfaceHover: '#1e293b', /* Slate 800 */
+              accent: '#0066FF',   /* Electric Sharp Blue */
+              accentHover: '#0052cc',
+              neon: '#00E676',     /* Sharp Tech Green */
               border: '#1e293b'
             }
           },
+          backgroundImage: {
+            'grid-pattern': "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M59 59v-59h-59v59h59zm-1-1h-57v-57h57v57z' fill='%231e293b' fill-opacity='0.25' fill-rule='evenodd'/%3E%3C/svg%3E\")",
+            'dots-pattern': "url(\"data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='2' cy='2' r='1' fill='%230066FF' fill-opacity='0.15'/%3E%3C/svg%3E\")",
+          },
           animation: {
-            'blob': 'blob 7s infinite',
-            'gradient-x': 'gradient-x 15s ease infinite',
+            'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'float': 'float 6s ease-in-out infinite',
+            'data-stream': 'dataStream 2s linear infinite',
           },
           keyframes: {
-            blob: {
-              '0%': { transform: 'translate(0px, 0px) scale(1)' },
-              '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
-              '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
-              '100%': { transform: 'translate(0px, 0px) scale(1)' },
+            float: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-10px)' },
             },
-            'gradient-x': {
-              '0%, 100%': {
-                'background-size': '200% 200%',
-                'background-position': 'left center'
-              },
-              '50%': {
-                'background-size': '200% 200%',
-                'background-position': 'right center'
-              }
+            dataStream: {
+              '0%': { strokeDashoffset: '100' },
+              '100%': { strokeDashoffset: '0' },
             }
           }
         }
@@ -64,460 +62,443 @@
     }
   </script>
   <style>
-    body {
-      background-color: #050811;
-      background-image: 
-        radial-gradient(at 0% 0%, hsla(253,16%,7%,1) 0, transparent 50%), 
-        radial-gradient(at 50% 0%, hsla(225,39%,30%,0.1) 0, transparent 50%), 
-        radial-gradient(at 100% 0%, hsla(339,49%,30%,0.1) 0, transparent 50%);
+    body { background-color: #050a14; }
+    
+    .sharp-card {
+      background: rgba(15, 23, 42, 0.7);
+      backdrop-filter: blur(12px);
+      border: 1px solid #1e293b;
+      border-radius: 4px;
+      transition: all 0.3s ease;
     }
-    .glass-card {
-      background: rgba(15, 21, 35, 0.6);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    .sharp-card:hover {
+      border-color: rgba(0, 102, 255, 0.4);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 40px -10px rgba(0, 102, 255, 0.15);
     }
-    .glass-card:hover {
-      border-color: rgba(255, 255, 255, 0.1);
-      transform: translateY(-4px);
+    
+    .accent-bar { position: relative; }
+    .accent-bar::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background-color: #0066FF;
+      border-top-left-radius: 4px;
+      border-bottom-left-radius: 4px;
+      transition: background-color 0.3s;
     }
-    .glow-cyan { box-shadow: 0 0 40px -10px rgba(6, 182, 212, 0.3); }
-    .glow-amber { box-shadow: 0 0 40px -10px rgba(245, 158, 11, 0.3); }
+    .sharp-card:hover.accent-bar::before { background-color: #00E676; }
     
     /* Custom Scrollbar */
     ::-webkit-scrollbar { width: 8px; }
-    ::-webkit-scrollbar-track { background: #050811; }
-    ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
-    ::-webkit-scrollbar-thumb:hover { background: #334155; }
+    ::-webkit-scrollbar-track { background: #050a14; }
+    ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 0px; }
+    ::-webkit-scrollbar-thumb:hover { background: #0066FF; }
+
+    /* SVG Tech Graphic Animations */
+    .node-pulse {
+      transform-origin: center;
+      animation: pulse-node 2s infinite alternate;
+    }
+    @keyframes pulse-node {
+      0% { r: 3; fill: #0066FF; filter: drop-shadow(0 0 5px #0066FF); }
+      100% { r: 5; fill: #00E676; filter: drop-shadow(0 0 10px #00E676); }
+    }
+    @keyframes spin { 100% { transform: rotate(360deg); } }
   </style>
 </head>
-<body class="text-slate-200 font-sans antialiased selection:bg-cyan-500 selection:text-brand-dark overflow-x-hidden">
+<body class="text-slate-300 font-sans antialiased selection:bg-brand-accent selection:text-white overflow-x-hidden relative">
 
-  <!-- Ambient Background Gradients (Animated) -->
-  <div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
-    <div class="absolute -top-40 -left-40 w-96 h-96 bg-cyan-600/10 rounded-full blur-[100px] animate-blob"></div>
-    <div class="absolute top-1/4 -right-40 w-96 h-96 bg-amber-600/10 rounded-full blur-[100px] animate-blob animation-delay-2000"></div>
-    <div class="absolute -bottom-40 left-1/3 w-96 h-96 bg-emerald-600/10 rounded-full blur-[100px] animate-blob animation-delay-4000"></div>
-  </div>
+  <!-- Layered Corporate Tech Backgrounds -->
+  <div class="fixed inset-0 pointer-events-none z-0 bg-grid-pattern opacity-60"></div>
+  <div class="fixed inset-0 pointer-events-none z-0 bg-dots-pattern opacity-40"></div>
+  
+  <!-- Abstract Glows -->
+  <div class="fixed top-[-10%] left-[-10%] w-[40%] h-[40%] bg-brand-accent/20 rounded-full blur-[150px] pointer-events-none z-0"></div>
+  <div class="fixed bottom-[-10%] right-[-10%] w-[30%] h-[30%] bg-brand-neon/10 rounded-full blur-[120px] pointer-events-none z-0"></div>
 
   <!-- Navigation -->
-  <header class="fixed top-0 inset-x-0 z-50 glass-card !transform-none !border-x-0 !border-t-0 border-b border-white/5 bg-brand-dark/50">
-    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+  <header class="fixed top-0 inset-x-0 z-50 bg-brand-bg/90 backdrop-blur-md border-b border-brand-border">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between relative z-10">
       <a href="#hero" class="flex items-center gap-3 group">
-        <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-cyan-400 to-amber-500 p-[1.5px] group-hover:shadow-[0_0_20px_rgba(6,182,212,0.4)] transition-shadow duration-300">
-          <div class="w-full h-full bg-brand-dark rounded-[9.5px] flex items-center justify-center font-mono font-bold text-lg text-white">
-            MG
-          </div>
-        </div>
-        <div>
-          <span class="font-bold text-base tracking-tight block text-white group-hover:text-cyan-400 transition-colors">Manosh Ghosh</span>
-          <span class="text-[10px] uppercase font-mono tracking-widest text-slate-400">Tech × Infrastructure</span>
+        <div class="flex flex-col">
+          <span class="font-extrabold text-xl tracking-tight text-white uppercase flex items-center gap-2">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0066FF" stroke-width="2" class="group-hover:stroke-brand-neon transition-colors">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+            </svg>
+            MG<span class="text-brand-accent">.</span>CORP
+          </span>
+          <span class="text-[9px] uppercase font-mono tracking-[0.2em] text-slate-500 ml-8">Systems & Infrastructure</span>
         </div>
       </a>
 
-      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
-        <a href="#projects" class="hover:text-cyan-400 transition-colors">Featured Works</a>
-        <a href="#tech-ventures" class="hover:text-cyan-400 transition-colors">Software & AI</a>
-        <a href="#industrial" class="hover:text-amber-400 transition-colors">Civil & Aggregates</a>
-        <a href="#contact" class="px-5 py-2.5 rounded-lg bg-white/5 hover:bg-white/10 text-white transition-all border border-white/10 hover:border-white/20 shadow-sm flex items-center gap-2">
-          Get in Touch <i data-lucide="arrow-right" class="w-4 h-4"></i>
+      <nav class="hidden md:flex items-center gap-8 text-sm font-semibold text-slate-400">
+        <a href="#projects" class="hover:text-white transition-colors flex items-center gap-2"><i data-lucide="layout-grid" class="w-4 h-4"></i> Architecture</a>
+        <a href="#solutions" class="hover:text-white transition-colors flex items-center gap-2"><i data-lucide="cpu" class="w-4 h-4"></i> Solutions</a>
+        <a href="#infrastructure" class="hover:text-white transition-colors flex items-center gap-2"><i data-lucide="truck" class="w-4 h-4"></i> Infrastructure</a>
+        <a href="#contact" class="px-6 py-2 bg-brand-accent hover:bg-brand-accentHover text-white rounded-[4px] transition-all flex items-center gap-2 font-bold shadow-[0_0_15px_rgba(0,102,255,0.3)] border border-brand-accent">
+          Partner With Us <i data-lucide="arrow-right" class="w-4 h-4"></i>
         </a>
       </nav>
     </div>
+    <!-- Glowing bottom border effect -->
+    <div class="absolute bottom-0 left-0 h-[1px] w-full bg-gradient-to-r from-transparent via-brand-accent to-transparent opacity-50"></div>
   </header>
 
   <main class="relative z-10 max-w-7xl mx-auto px-6 pt-32 pb-24">
     
     <!-- Hero Section -->
-    <section id="hero" class="pt-16 pb-24 grid lg:grid-cols-12 gap-12 items-center min-h-[85vh]">
-      <div class="lg:col-span-7 space-y-8" data-aos="fade-right" data-aos-duration="1000">
-        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card !transform-none border-cyan-500/30 text-cyan-300 text-xs font-mono backdrop-blur-md">
+    <section id="hero" class="pt-16 pb-24 grid lg:grid-cols-2 gap-12 items-center min-h-[85vh]">
+      <div class="space-y-8" data-aos="fade-right" data-aos-duration="800">
+        <div class="inline-flex items-center gap-3 px-3 py-1.5 bg-brand-surface border border-brand-border rounded-[4px] text-brand-neon text-xs font-mono font-bold uppercase tracking-wider shadow-[0_0_10px_rgba(0,230,118,0.1)]">
           <span class="relative flex h-2 w-2">
-            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-            <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-neon opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-brand-neon"></span>
           </span>
-          Available for High-Scale Systems & Strategic Contracts
+          Enterprise System Ready
         </div>
 
-        <h1 class="text-5xl sm:text-7xl font-extrabold tracking-tight leading-[1.1]">
-          Architecting Code. <br>
-          <span class="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-teal-300 to-amber-400 animate-gradient-x">
-            Constructing Foundations.
-          </span>
+        <h1 class="text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.05] text-white">
+          Data-Driven <br>
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-accent to-cyan-400">Architecture.</span><br>
+          Industrial<br>
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-neon to-emerald-400">Foundations.</span>
         </h1>
 
-        <p class="text-slate-400 text-lg leading-relaxed max-w-2xl font-light">
-          I am <strong class="text-white font-medium">Manosh Ghosh</strong> — a Web Application Developer, AI Designer, and System Innovator bridging the digital realm of intelligent software with the physical realities of road infrastructure and material logistics in Bangladesh.
+        <p class="text-slate-400 text-lg leading-relaxed max-w-xl font-normal border-l-2 border-brand-border pl-4">
+          Delivering high-performance software systems, domain-tuned AI integrations, and heavy civil infrastructure solutions across Bangladesh. Built for scale, engineered for precision.
         </p>
 
-        <!-- Quick CTAs -->
         <div class="flex flex-wrap gap-4 pt-4">
-          <a href="#projects" class="px-7 py-3.5 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-brand-dark font-bold transition-all flex items-center gap-2 glow-cyan">
-            <i data-lucide="code-2" class="w-5 h-5"></i> Explore Tech Solutions
+          <a href="#solutions" class="px-8 py-4 bg-brand-accent hover:bg-brand-accentHover text-white font-bold rounded-[4px] transition-all flex items-center gap-2 shadow-[0_0_20px_rgba(0,102,255,0.4)]">
+            <i data-lucide="layers" class="w-5 h-5"></i> View Technology Stack
           </a>
-          <a href="#industrial" class="px-7 py-3.5 rounded-xl glass-card hover:bg-white/10 text-white font-semibold transition-all flex items-center gap-2 border border-amber-500/30">
-            <i data-lucide="hard-hat" class="w-5 h-5 text-amber-400"></i> Civil Tenders & Supply
+          <a href="#infrastructure" class="px-8 py-4 bg-brand-surface hover:bg-brand-surfaceHover text-white font-semibold rounded-[4px] transition-all border border-brand-border flex items-center gap-2">
+            <i data-lucide="hard-hat" class="w-5 h-5 text-slate-400"></i> Civil Logistics
           </a>
-        </div>
-
-        <!-- Metric Badges -->
-        <div class="grid grid-cols-3 gap-6 pt-8 border-t border-white/5">
-          <div>
-            <span class="font-mono text-3xl font-bold text-cyan-400">100%</span>
-            <p class="text-sm text-slate-500 mt-1 font-medium">e-GP Competence</p>
-          </div>
-          <div>
-            <span class="font-mono text-3xl font-bold text-amber-400">Multi-Ton</span>
-            <p class="text-sm text-slate-500 mt-1 font-medium">Aggregate Logistics</p>
-          </div>
-          <div>
-            <span class="font-mono text-3xl font-bold text-emerald-400">Full-Stack</span>
-            <p class="text-sm text-slate-500 mt-1 font-medium">System Architecture</p>
-          </div>
         </div>
       </div>
 
-      <!-- Hero Visual Card -->
-      <div class="lg:col-span-5" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
-        <div class="glass-card !transform-none p-8 rounded-3xl border border-white/10 relative overflow-hidden shadow-2xl">
-          <!-- Decorative UI Elements -->
-          <div class="absolute top-0 right-0 p-4 opacity-20">
-            <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M59.5 30C59.5 46.2924 46.2924 59.5 30 59.5C13.7076 59.5 0.5 46.2924 0.5 30C0.5 13.7076 13.7076 0.5 30 0.5C46.2924 0.5 59.5 13.7076 59.5 30Z" stroke="currentColor" stroke-dasharray="2 4"/>
-            </svg>
-          </div>
-          
-          <div class="space-y-5 relative z-10">
-            <!-- Software pill -->
-            <div class="p-5 rounded-2xl bg-brand-dark/60 border border-cyan-500/20 flex items-start gap-4 hover:border-cyan-500/50 transition-colors cursor-default">
-              <div class="p-3 bg-cyan-500/10 text-cyan-400 rounded-xl shrink-0">
-                <i data-lucide="cpu" class="w-6 h-6"></i>
-              </div>
-              <div>
-                <h4 class="font-bold text-white">System & AI Innovation</h4>
-                <p class="text-sm text-slate-400 mt-1">Real-time web applications, OS development, and domain-tuned AI models.</p>
-              </div>
-            </div>
+      <!-- Advanced Technical SVG Graphic -->
+      <div class="hidden lg:block relative h-full w-full animate-float" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
+        <div class="absolute inset-0 flex items-center justify-center">
+          <svg width="100%" height="100%" viewBox="0 0 500 500" class="drop-shadow-[0_0_30px_rgba(0,102,255,0.2)]">
+            <!-- Grid Lines -->
+            <path d="M50 250 L450 250 M250 50 L250 450 M100 100 L400 400 M100 400 L400 100" stroke="#1e293b" stroke-width="1" stroke-dasharray="4 4" />
+            
+            <!-- Hexagons / Cyber structure -->
+            <polygon points="250,100 380,175 380,325 250,400 120,325 120,175" fill="rgba(15, 23, 42, 0.8)" stroke="#0066FF" stroke-width="2" class="opacity-50" />
+            <polygon points="250,150 336,200 336,300 250,350 164,300 164,200" fill="none" stroke="#00E676" stroke-width="1" />
+            
+            <!-- Animated Data Streams -->
+            <circle cx="250" cy="250" r="150" fill="none" stroke="#1e293b" stroke-width="1" />
+            <circle cx="250" cy="250" r="150" fill="none" stroke="#0066FF" stroke-width="3" stroke-dasharray="50 150" class="animate-data-stream" style="transform-origin: center; animation: spin 4s linear infinite;" />
+            <circle cx="250" cy="250" r="100" fill="none" stroke="#00E676" stroke-width="2" stroke-dasharray="30 100" class="animate-data-stream" style="transform-origin: center; animation: spin 3s linear infinite reverse;" />
 
-            <!-- Material pill -->
-            <div class="p-5 rounded-2xl bg-brand-dark/60 border border-amber-500/20 flex items-start gap-4 hover:border-amber-500/50 transition-colors cursor-default">
-              <div class="p-3 bg-amber-500/10 text-amber-400 rounded-xl shrink-0">
-                <i data-lucide="truck" class="w-6 h-6"></i>
-              </div>
-              <div>
-                <h4 class="font-bold text-white">Heavy Material Logistics</h4>
-                <p class="text-sm text-slate-400 mt-1">Direct supply networks for Premium Auto Bricks, Coarse Sand, and Stone Aggregates.</p>
-              </div>
-            </div>
+            <!-- Connecting Data Nodes -->
+            <g stroke="#334155" stroke-width="2">
+              <line x1="250" y1="250" x2="380" y2="175" />
+              <line x1="250" y1="250" x2="120" y2="175" />
+              <line x1="250" y1="250" x2="250" y2="400" />
+              <line x1="380" y1="175" x2="450" y2="100" stroke="#0066FF" stroke-dasharray="5 5" />
+            </g>
 
-            <!-- Road pill -->
-            <div class="p-5 rounded-2xl bg-brand-dark/60 border border-emerald-500/20 flex items-start gap-4 hover:border-emerald-500/50 transition-colors cursor-default">
-              <div class="p-3 bg-emerald-500/10 text-emerald-400 rounded-xl shrink-0">
-                <i data-lucide="git-branch" class="w-6 h-6"></i>
-              </div>
-              <div>
-                <h4 class="font-bold text-white">Road Infrastructure</h4>
-                <p class="text-sm text-slate-400 mt-1">Active participant in civil engineering and government e-GP road construction works.</p>
-              </div>
-            </div>
-          </div>
+            <!-- Pulsing Node Points -->
+            <circle cx="250" cy="250" r="8" fill="#fff" filter="drop-shadow(0 0 10px #fff)" />
+            <circle cx="380" cy="175" class="node-pulse" />
+            <circle cx="120" cy="175" class="node-pulse" style="animation-delay: 0.5s;" />
+            <circle cx="250" cy="400" class="node-pulse" style="animation-delay: 1s;" />
+            <circle cx="120" cy="325" r="4" fill="#0066FF" />
+            <circle cx="380" cy="325" r="4" fill="#0066FF" />
+            <circle cx="450" cy="100" r="4" fill="#00E676" />
+          </svg>
+        </div>
+
+        <!-- Floating Data Panels -->
+        <div class="absolute top-1/4 -left-4 sharp-card p-3 border-l-2 border-l-brand-neon animate-pulse-slow">
+          <div class="text-[9px] font-mono text-slate-400 uppercase">System Status</div>
+          <div class="text-sm font-bold text-white flex items-center gap-2"><i data-lucide="check-circle" class="w-3 h-3 text-brand-neon"></i> OPTIMAL</div>
+        </div>
+        
+        <div class="absolute bottom-1/4 -right-4 sharp-card p-3 border-l-2 border-l-brand-accent shadow-[0_0_15px_rgba(0,102,255,0.2)]">
+          <div class="text-[9px] font-mono text-slate-400 uppercase">e-GP Competence</div>
+          <div class="text-sm font-bold text-white">100% Verified</div>
         </div>
       </div>
     </section>
 
-    <!-- SECTION 1: Featured Projects (Personalized) -->
-    <section id="projects" class="py-20 border-t border-white/5">
-      <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4" data-aos="fade-up">
-        <div>
-          <span class="text-emerald-400 font-mono text-xs uppercase tracking-[0.2em]">Showcase</span>
-          <h2 class="text-3xl md:text-4xl font-bold mt-2 text-white">Featured Architecture</h2>
-        </div>
-        <p class="text-slate-400 text-sm max-w-md md:text-right">
-          A selection of recent technical developments spanning low-level system design, AI integration, and full-stack commerce.
+    <!-- SECTION 1: Featured Architecture (Projects) -->
+    <section id="projects" class="py-24 border-t border-brand-border relative z-10">
+      <!-- Section Decoration -->
+      <div class="absolute top-0 right-0 w-64 h-64 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjIiIGZpbGw9IiMwMDY2ZmYiIGZpbGwtb3BhY2l0eT0iMC4xNSIvPjwvc3ZnPg==')] opacity-50 pointer-events-none z-0"></div>
+
+      <div class="mb-16 max-w-3xl relative z-10" data-aos="fade-up">
+        <span class="text-brand-accent font-mono text-xs font-bold uppercase tracking-[0.2em] mb-3 block">Deployment Showcase</span>
+        <h2 class="text-3xl md:text-5xl font-extrabold text-white tracking-tight mb-4">System Architecture</h2>
+        <p class="text-slate-400 text-lg">
+          A selection of recent technical deployments spanning low-level system design, AI integration, and full-stack commerce.
         </p>
       </div>
 
-      <div class="grid lg:grid-cols-3 gap-8">
-        <!-- Project 1 -->
-        <div class="glass-card rounded-2xl overflow-hidden group flex flex-col" data-aos="fade-up" data-aos-delay="100">
-          <div class="h-48 bg-slate-800 relative overflow-hidden border-b border-white/5">
-            <div class="absolute inset-0 bg-gradient-to-br from-emerald-900/40 to-brand-dark"></div>
-            <div class="absolute inset-0 flex items-center justify-center opacity-30 group-hover:scale-110 transition-transform duration-700">
-              <i data-lucide="terminal" class="w-24 h-24 text-emerald-400"></i>
-            </div>
+      <div class="grid lg:grid-cols-3 gap-8 relative z-10">
+        <!-- Project 1: Bangla OS -->
+        <div class="sharp-card flex flex-col group" data-aos="fade-up" data-aos-delay="100">
+          <div class="h-48 bg-brand-bg flex items-center justify-center border-b border-brand-border overflow-hidden relative">
+             <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjIiIGZpbGw9IiMzMzMiLz48L3N2Zz4=')] opacity-20"></div>
+             <i data-lucide="binary" class="w-16 h-16 text-slate-500 group-hover:scale-110 group-hover:text-brand-accent transition-all duration-500 relative z-10"></i>
           </div>
           <div class="p-8 flex-1 flex flex-col">
-            <div class="flex items-center justify-between mb-4">
-              <span class="text-xs font-mono text-emerald-400 bg-emerald-400/10 px-3 py-1 rounded-full">OS Development</span>
-              <a href="#" class="text-slate-400 hover:text-white transition-colors"><i data-lucide="external-link" class="w-4 h-4"></i></a>
+            <div class="mb-4">
+              <span class="text-[10px] font-mono text-brand-accent border border-brand-accent/30 px-2 py-1 rounded-sm uppercase tracking-wider bg-brand-accent/5">OS Architecture</span>
             </div>
-            <h3 class="text-2xl font-bold text-white mb-3">Bangla OS</h3>
-            <p class="text-slate-400 text-sm mb-6 flex-1">
-              Low-level operating system architecture exploring custom kernel logic, assembly bootloaders, and VGA graphics mode switching. Implemented specialized bitmap font rendering and foundational driver designs.
+            <h3 class="text-xl font-bold text-white mb-3">Bangla OS</h3>
+            <p class="text-slate-400 text-sm mb-6 flex-1 leading-relaxed">
+              Low-level operating system architecture exploring custom kernel logic, assembly bootloaders, VGA graphics mode switching, and foundational driver designs.
             </p>
-            <div class="flex flex-wrap gap-2 text-xs font-mono text-slate-300">
-              <span class="px-2.5 py-1 bg-white/5 rounded border border-white/5">Assembly</span>
-              <span class="px-2.5 py-1 bg-white/5 rounded border border-white/5">C</span>
-              <span class="px-2.5 py-1 bg-white/5 rounded border border-white/5">Kernel Logic</span>
+            <div class="flex gap-4 border-t border-brand-border pt-4 text-xs font-mono text-slate-500">
+              <span class="flex items-center gap-1"><i data-lucide="code" class="w-3 h-3"></i> ASM</span>
+              <span class="flex items-center gap-1"><i data-lucide="code" class="w-3 h-3"></i> C</span>
+              <span class="flex items-center gap-1"><i data-lucide="cpu" class="w-3 h-3"></i> Kernel</span>
             </div>
           </div>
         </div>
 
-        <!-- Project 2 -->
-        <div class="glass-card rounded-2xl overflow-hidden group flex flex-col" data-aos="fade-up" data-aos-delay="200">
-          <div class="h-48 bg-slate-800 relative overflow-hidden border-b border-white/5">
-            <div class="absolute inset-0 bg-gradient-to-br from-cyan-900/40 to-brand-dark"></div>
-            <div class="absolute inset-0 flex items-center justify-center opacity-30 group-hover:scale-110 transition-transform duration-700">
-              <i data-lucide="activity" class="w-24 h-24 text-cyan-400"></i>
-            </div>
+        <!-- Project 2: Nutribite -->
+        <div class="sharp-card flex flex-col group" data-aos="fade-up" data-aos-delay="200">
+          <div class="h-48 bg-brand-bg flex items-center justify-center border-b border-brand-border overflow-hidden relative">
+             <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjIiIGZpbGw9IiMzMzMiLz48L3N2Zz4=')] opacity-20"></div>
+             <i data-lucide="activity-square" class="w-16 h-16 text-slate-500 group-hover:scale-110 group-hover:text-brand-neon transition-all duration-500 relative z-10"></i>
           </div>
           <div class="p-8 flex-1 flex flex-col">
-            <div class="flex items-center justify-between mb-4">
-              <span class="text-xs font-mono text-cyan-400 bg-cyan-400/10 px-3 py-1 rounded-full">AI Web App</span>
-              <a href="#" class="text-slate-400 hover:text-white transition-colors"><i data-lucide="external-link" class="w-4 h-4"></i></a>
+            <div class="mb-4">
+              <span class="text-[10px] font-mono text-brand-neon border border-brand-neon/30 px-2 py-1 rounded-sm uppercase tracking-wider bg-brand-neon/5">AI Integration</span>
             </div>
-            <h3 class="text-2xl font-bold text-white mb-3">Nutribite</h3>
-            <p class="text-slate-400 text-sm mb-6 flex-1">
-              An intelligent, personalized diet planning assistant. Built to dynamically generate and track nutritional data, providing automated meal structures based on user metrics and AI heuristics.
+            <h3 class="text-xl font-bold text-white mb-3">Nutribite</h3>
+            <p class="text-slate-400 text-sm mb-6 flex-1 leading-relaxed">
+              Intelligent, personalized diet planning assistant. Dynamically generates tracking data and provides automated meal structures based on user metrics and AI heuristics.
             </p>
-            <div class="flex flex-wrap gap-2 text-xs font-mono text-slate-300">
-              <span class="px-2.5 py-1 bg-white/5 rounded border border-white/5">React</span>
-              <span class="px-2.5 py-1 bg-white/5 rounded border border-white/5">Firebase</span>
-              <span class="px-2.5 py-1 bg-white/5 rounded border border-white/5">Tailwind</span>
+            <div class="flex gap-4 border-t border-brand-border pt-4 text-xs font-mono text-slate-500">
+              <span class="flex items-center gap-1"><i data-lucide="layers" class="w-3 h-3"></i> React</span>
+              <span class="flex items-center gap-1"><i data-lucide="database" class="w-3 h-3"></i> Firebase</span>
+              <span class="flex items-center gap-1"><i data-lucide="brain" class="w-3 h-3"></i> AI Logic</span>
             </div>
           </div>
         </div>
 
-        <!-- Project 3 -->
-        <div class="glass-card rounded-2xl overflow-hidden group flex flex-col" data-aos="fade-up" data-aos-delay="300">
-          <div class="h-48 bg-slate-800 relative overflow-hidden border-b border-white/5">
-            <div class="absolute inset-0 bg-gradient-to-br from-purple-900/40 to-brand-dark"></div>
-            <div class="absolute inset-0 flex items-center justify-center opacity-30 group-hover:scale-110 transition-transform duration-700">
-              <i data-lucide="shopping-cart" class="w-24 h-24 text-purple-400"></i>
-            </div>
+        <!-- Project 3: Ekhoni Kino -->
+        <div class="sharp-card flex flex-col group" data-aos="fade-up" data-aos-delay="300">
+          <div class="h-48 bg-brand-bg flex items-center justify-center border-b border-brand-border overflow-hidden relative">
+             <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjIiIGZpbGw9IiMzMzMiLz48L3N2Zz4=')] opacity-20"></div>
+             <i data-lucide="shopping-bag" class="w-16 h-16 text-slate-500 group-hover:scale-110 group-hover:text-purple-500 transition-all duration-500 relative z-10"></i>
           </div>
           <div class="p-8 flex-1 flex flex-col">
-            <div class="flex items-center justify-between mb-4">
-              <span class="text-xs font-mono text-purple-400 bg-purple-400/10 px-3 py-1 rounded-full">E-Commerce</span>
-              <a href="#" class="text-slate-400 hover:text-white transition-colors"><i data-lucide="external-link" class="w-4 h-4"></i></a>
+            <div class="mb-4">
+              <span class="text-[10px] font-mono text-purple-400 border border-purple-400/30 px-2 py-1 rounded-sm uppercase tracking-wider bg-purple-500/5">E-Commerce</span>
             </div>
-            <h3 class="text-2xl font-bold text-white mb-3">Ekhoni Kino</h3>
-            <p class="text-slate-400 text-sm mb-6 flex-1">
-              Full-stack digital storefront architecture developed for premium fragrance retail. Features dynamic catalog rendering, responsive UI, and integrated simulations for bKash payment flows.
+            <h3 class="text-xl font-bold text-white mb-3">Ekhoni Kino</h3>
+            <p class="text-slate-400 text-sm mb-6 flex-1 leading-relaxed">
+              Full-stack digital storefront architecture developed for premium retail. Features dynamic catalog rendering and integrated simulations for bKash payment flows.
             </p>
-            <div class="flex flex-wrap gap-2 text-xs font-mono text-slate-300">
-              <span class="px-2.5 py-1 bg-white/5 rounded border border-white/5">Next.js</span>
-              <span class="px-2.5 py-1 bg-white/5 rounded border border-white/5">Node.js</span>
-              <span class="px-2.5 py-1 bg-white/5 rounded border border-white/5">Payment APIs</span>
+            <div class="flex gap-4 border-t border-brand-border pt-4 text-xs font-mono text-slate-500">
+              <span class="flex items-center gap-1"><i data-lucide="box" class="w-3 h-3"></i> Next.js</span>
+              <span class="flex items-center gap-1"><i data-lucide="server" class="w-3 h-3"></i> Node.js</span>
+              <span class="flex items-center gap-1"><i data-lucide="credit-card" class="w-3 h-3"></i> API</span>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- SECTION 2: Software & AI Innovation -->
-    <section id="tech-ventures" class="py-20 border-t border-white/5">
-      <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4" data-aos="fade-up">
-        <div>
-          <span class="text-cyan-400 font-mono text-xs uppercase tracking-[0.2em]">Engineering Track 01</span>
-          <h2 class="text-3xl md:text-4xl font-bold mt-2 text-white">System Architecture & AI</h2>
-        </div>
-        <p class="text-slate-400 text-sm max-w-md md:text-right">
-          Designing resilient digital architectures that solve operational bottlenecks, streamline data, and deliver intuitive user interfaces.
+    <!-- SECTION 2: Digital Solutions -->
+    <section id="solutions" class="py-24 border-t border-brand-border relative z-10">
+      <div class="mb-16 max-w-3xl" data-aos="fade-up">
+        <span class="text-brand-accent font-mono text-xs font-bold uppercase tracking-[0.2em] flex items-center gap-2 mb-3">
+          <i data-lucide="terminal" class="w-4 h-4"></i> Track 01 // Technology
+        </span>
+        <h2 class="text-3xl md:text-5xl font-extrabold text-white tracking-tight mb-4">Enterprise Digital Solutions</h2>
+        <p class="text-slate-400 text-lg">
+          Designing resilient digital architectures that solve operational bottlenecks, streamline big data, and deliver intuitive, high-conversion interfaces.
         </p>
       </div>
 
       <div class="grid md:grid-cols-3 gap-6">
         <!-- Tech Card 1 -->
-        <div class="glass-card p-8 rounded-2xl group" data-aos="fade-up" data-aos-delay="100">
-          <div class="w-14 h-14 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-cyan-500/20 transition-all">
-            <i data-lucide="layout" class="w-7 h-7"></i>
+        <div class="sharp-card accent-bar p-8" data-aos="fade-up" data-aos-delay="100">
+          <div class="w-12 h-12 bg-brand-accent/10 border border-brand-accent/20 rounded-[4px] flex items-center justify-center mb-6">
+            <i data-lucide="code-2" class="w-6 h-6 text-brand-accent"></i>
           </div>
           <h3 class="text-xl font-bold text-white mb-3">Modern Web Applications</h3>
           <p class="text-slate-400 text-sm leading-relaxed mb-6">
-            Responsive, scalable single-page and progressive web apps engineered with modern frontend frameworks and robust backend microservices.
+            Scalable single-page and progressive web apps engineered with React/Next.js frontend frameworks and robust Node.js backend microservices.
           </p>
-          <ul class="space-y-2 text-sm text-slate-300">
-            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-cyan-500"></i> React & Next.js Ecosystems</li>
-            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-cyan-500"></i> Firebase & Node.js Backends</li>
-            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-cyan-500"></i> Tailwind UI/UX Engineering</li>
+          <ul class="space-y-3 text-sm font-medium text-slate-300 border-t border-brand-border pt-6">
+            <li class="flex items-center gap-3"><i data-lucide="server" class="w-4 h-4 text-slate-500"></i> Next.js & React Ecosystems</li>
+            <li class="flex items-center gap-3"><i data-lucide="database" class="w-4 h-4 text-slate-500"></i> Firebase & Node.js Backends</li>
+            <li class="flex items-center gap-3"><i data-lucide="smartphone" class="w-4 h-4 text-slate-500"></i> Tailwind UI Engineering</li>
           </ul>
         </div>
 
         <!-- Tech Card 2 -->
-        <div class="glass-card p-8 rounded-2xl group" data-aos="fade-up" data-aos-delay="200">
-          <div class="w-14 h-14 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-cyan-500/20 transition-all">
-            <i data-lucide="sparkles" class="w-7 h-7"></i>
+        <div class="sharp-card accent-bar p-8" data-aos="fade-up" data-aos-delay="200">
+          <div class="w-12 h-12 bg-brand-neon/10 border border-brand-neon/20 rounded-[4px] flex items-center justify-center mb-6">
+            <i data-lucide="cpu" class="w-6 h-6 text-brand-neon"></i>
           </div>
           <h3 class="text-xl font-bold text-white mb-3">AI Design & Automation</h3>
           <p class="text-slate-400 text-sm leading-relaxed mb-6">
-            Integrating custom LLM pipelines, autonomous agents, and smart heuristics to automate decision-making and enhance interfaces.
+            Integrating custom LLM pipelines, autonomous agents, and smart heuristics to automate complex decision-making and enhance UX.
           </p>
-          <ul class="space-y-2 text-sm text-slate-300">
-            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-cyan-500"></i> Intelligent Voice Assistants</li>
-            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-cyan-500"></i> NLP & Sentiment Pipelines</li>
-            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-cyan-500"></i> Workflow Automation</li>
+          <ul class="space-y-3 text-sm font-medium text-slate-300 border-t border-brand-border pt-6">
+            <li class="flex items-center gap-3"><i data-lucide="mic" class="w-4 h-4 text-slate-500"></i> Intelligent Voice Assistants</li>
+            <li class="flex items-center gap-3"><i data-lucide="bar-chart" class="w-4 h-4 text-slate-500"></i> NLP & Sentiment Pipelines</li>
+            <li class="flex items-center gap-3"><i data-lucide="bot" class="w-4 h-4 text-slate-500"></i> Workflow Automation</li>
           </ul>
         </div>
 
         <!-- Tech Card 3 -->
-        <div class="glass-card p-8 rounded-2xl group" data-aos="fade-up" data-aos-delay="300">
-          <div class="w-14 h-14 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-cyan-500/20 transition-all">
-            <i data-lucide="layers" class="w-7 h-7"></i>
+        <div class="sharp-card accent-bar p-8" data-aos="fade-up" data-aos-delay="300">
+          <div class="w-12 h-12 bg-purple-500/10 border border-purple-500/20 rounded-[4px] flex items-center justify-center mb-6">
+            <i data-lucide="network" class="w-6 h-6 text-purple-400"></i>
           </div>
           <h3 class="text-xl font-bold text-white mb-3">Industrial ERP Tools</h3>
           <p class="text-slate-400 text-sm leading-relaxed mb-6">
-            Custom-built internal systems designed specifically for material tracking, fleet management, and supply chain accountability.
+            Custom-built internal systems designed specifically for material tracking, heavy fleet management, and supply chain accountability.
           </p>
-          <ul class="space-y-2 text-sm text-slate-300">
-            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-cyan-500"></i> Live Fleet Tracking</li>
-            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-cyan-500"></i> Tender Estimation Logic</li>
-            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-cyan-500"></i> Inventory Dashboards</li>
+          <ul class="space-y-3 text-sm font-medium text-slate-300 border-t border-brand-border pt-6">
+            <li class="flex items-center gap-3"><i data-lucide="map" class="w-4 h-4 text-slate-500"></i> Live Fleet Tracking</li>
+            <li class="flex items-center gap-3"><i data-lucide="calculator" class="w-4 h-4 text-slate-500"></i> Tender Estimation Logic</li>
+            <li class="flex items-center gap-3"><i data-lucide="boxes" class="w-4 h-4 text-slate-500"></i> Inventory Dashboards</li>
           </ul>
         </div>
       </div>
     </section>
 
-    <!-- SECTION 3: Construction Materials & Road Tenders -->
-    <section id="industrial" class="py-20 border-t border-white/5">
-      <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4" data-aos="fade-up">
-        <div>
-          <span class="text-amber-400 font-mono text-xs uppercase tracking-[0.2em]">Enterprise Track 02</span>
-          <h2 class="text-3xl md:text-4xl font-bold mt-2 text-white">Civil Infrastructure</h2>
-        </div>
-        <p class="text-slate-400 text-sm max-w-md md:text-right">
+    <!-- SECTION 3: Physical Infrastructure (Civil) -->
+    <section id="infrastructure" class="py-24 border-t border-brand-border relative z-10">
+      <div class="mb-16 max-w-3xl" data-aos="fade-up">
+        <span class="text-brand-neon font-mono text-xs font-bold uppercase tracking-[0.2em] flex items-center gap-2 mb-3">
+          <i data-lucide="hard-hat" class="w-4 h-4"></i> Track 02 // Physical
+        </span>
+        <h2 class="text-3xl md:text-5xl font-extrabold text-white tracking-tight mb-4">Civil Infrastructure & Logistics</h2>
+        <p class="text-slate-400 text-lg">
           Providing high-grade raw aggregates and executing government and municipal road construction contracts across Bangladesh.
         </p>
       </div>
 
-      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <!-- Aggregate: Bricks -->
-        <div class="glass-card p-8 rounded-2xl hover:border-amber-500/30 transition-all" data-aos="fade-up" data-aos-delay="100">
-          <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center mb-5 font-mono font-bold text-xl">
-            01
+      <div class="grid md:grid-cols-2 gap-6">
+        
+        <!-- Civil Tenders -->
+        <div class="sharp-card p-10 bg-brand-surface relative overflow-hidden group" data-aos="fade-up" data-aos-delay="100">
+          <div class="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity">
+            <i data-lucide="file-check" class="w-32 h-32 text-brand-neon"></i>
           </div>
-          <h4 class="text-lg font-bold text-white mb-3">Auto & 1st Class Bricks</h4>
-          <p class="text-sm text-slate-400 leading-relaxed">
-            High-compressive strength bricks suited for bridge abutments, multi-story foundations, and road base layers.
-          </p>
-          <div class="mt-6 pt-4 border-t border-white/5 text-xs font-mono text-amber-400 flex items-center gap-2">
-            <i data-lucide="box" class="w-4 h-4"></i> Bulk Direct Sourcing
-          </div>
-        </div>
-
-        <!-- Aggregate: Sand -->
-        <div class="glass-card p-8 rounded-2xl hover:border-amber-500/30 transition-all" data-aos="fade-up" data-aos-delay="200">
-          <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center mb-5 font-mono font-bold text-xl">
-            02
-          </div>
-          <h4 class="text-lg font-bold text-white mb-3">Sand (FM 1.5 - 2.5)</h4>
-          <p class="text-sm text-slate-400 leading-relaxed">
-            Screened riverbed filling sand and coarse Sylhet sand for high-grade RCC casting, plastering, and sub-base.
-          </p>
-          <div class="mt-6 pt-4 border-t border-white/5 text-xs font-mono text-amber-400 flex items-center gap-2">
-            <i data-lucide="filter" class="w-4 h-4"></i> Certified Fineness
+          <h3 class="text-2xl font-bold text-white mb-2 relative z-10">BD Road Tenders (e-GP)</h3>
+          <p class="text-slate-400 mb-8 relative z-10 max-w-md">End-to-end execution of civil road tenders: earthwork preparation, sub-base compaction, WBM, and asphalt macadam.</p>
+          
+          <div class="grid grid-cols-2 gap-4 relative z-10 border-t border-brand-border pt-6">
+            <div>
+              <p class="text-xs font-mono text-slate-500 uppercase mb-1">Compliance</p>
+              <p class="font-bold text-white flex items-center gap-2"><i data-lucide="shield-check" class="w-4 h-4 text-brand-neon"></i> e-GP Verified</p>
+            </div>
+            <div>
+              <p class="text-xs font-mono text-slate-500 uppercase mb-1">Capability</p>
+              <p class="font-bold text-white flex items-center gap-2"><i data-lucide="truck" class="w-4 h-4 text-brand-neon"></i> Full-Cycle Execution</p>
+            </div>
           </div>
         </div>
 
-        <!-- Aggregate: Stone & Torsha -->
-        <div class="glass-card p-8 rounded-2xl hover:border-amber-500/30 transition-all" data-aos="fade-up" data-aos-delay="300">
-          <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center mb-5 font-mono font-bold text-xl">
-            03
+        <!-- Material Supply Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6" data-aos="fade-up" data-aos-delay="200">
+          
+          <div class="sharp-card p-6 border-l-4 border-l-amber-500">
+            <h4 class="font-bold text-white mb-2 flex items-center gap-2">
+              <i data-lucide="box" class="w-4 h-4 text-amber-500"></i> Auto Bricks
+            </h4>
+            <p class="text-xs text-slate-400 leading-relaxed">High-compressive strength 1st class bricks for bridge abutments, foundations, and road base layers.</p>
           </div>
-          <h4 class="text-lg font-bold text-white mb-3">Stone Chips & Torsha</h4>
-          <p class="text-sm text-slate-400 leading-relaxed">
-            Imported and crushed stone aggregate, calibrated for bituminous carpet surfacing and heavy concrete.
-          </p>
-          <div class="mt-6 pt-4 border-t border-white/5 text-xs font-mono text-amber-400 flex items-center gap-2">
-            <i data-lucide="mountain" class="w-4 h-4"></i> Graded Variations
-          </div>
-        </div>
 
-        <!-- Tender Contracts -->
-        <div class="glass-card p-8 rounded-2xl hover:border-amber-500/30 transition-all" data-aos="fade-up" data-aos-delay="400">
-          <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center mb-5 font-mono font-bold text-xl">
-            04
+          <div class="sharp-card p-6 border-l-4 border-l-orange-400">
+            <h4 class="font-bold text-white mb-2 flex items-center gap-2">
+              <i data-lucide="filter" class="w-4 h-4 text-orange-400"></i> Sand (FM 1.5-2.5)
+            </h4>
+            <p class="text-xs text-slate-400 leading-relaxed">Screened riverbed filling sand and coarse Sylhet sand for high-grade RCC casting and plastering.</p>
           </div>
-          <h4 class="text-lg font-bold text-white mb-3">BD Road Tenders</h4>
-          <p class="text-sm text-slate-400 leading-relaxed">
-            End-to-end execution of civil road tenders: earthwork preparation, sub-base compaction, WBM, and asphalt.
-          </p>
-          <div class="mt-6 pt-4 border-t border-white/5 text-xs font-mono text-amber-400 flex items-center gap-2">
-            <i data-lucide="file-signature" class="w-4 h-4"></i> e-GP Compliant
+
+          <div class="sharp-card p-6 border-l-4 border-l-slate-400 sm:col-span-2">
+            <h4 class="font-bold text-white mb-2 flex items-center gap-2">
+              <i data-lucide="mountain" class="w-4 h-4 text-slate-400"></i> Stone Chips & Torsha Aggregate
+            </h4>
+            <p class="text-xs text-slate-400 leading-relaxed">Imported and crushed stone aggregate, calibrated for bituminous carpet surfacing and heavy concrete structural work.</p>
           </div>
+
         </div>
       </div>
     </section>
 
-    <!-- SECTION 4: Contact & Proposal Form -->
-    <section id="contact" class="py-20 border-t border-white/5" data-aos="zoom-in-up">
-      <div class="glass-card !transform-none rounded-[2rem] p-8 md:p-14 border border-white/10 max-w-5xl mx-auto relative overflow-hidden shadow-2xl">
-        <!-- Glow effect behind form -->
-        <div class="absolute -top-40 -right-40 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
-        
-        <div class="grid md:grid-cols-5 gap-12 relative z-10">
-          <div class="md:col-span-2">
-            <span class="text-cyan-400 font-mono text-xs uppercase tracking-[0.2em]">Connect Directly</span>
-            <h3 class="text-3xl font-bold text-white mt-2 mb-4">Initiate a Collaboration</h3>
-            <p class="text-slate-400 text-sm leading-relaxed mb-8">
-              Whether you need an intelligent web platform, an automated system design, bulk construction raw materials, or joint venture tender execution in Bangladesh — let's connect.
+    <!-- SECTION 4: Contact / RFP Form -->
+    <section id="contact" class="py-24 border-t border-brand-border relative z-10" data-aos="fade-up">
+      <div class="sharp-card p-10 md:p-16 border-t-4 border-t-brand-accent bg-brand-surface max-w-5xl mx-auto shadow-2xl">
+        <div class="grid md:grid-cols-2 gap-16">
+          
+          <!-- Contact Info -->
+          <div>
+            <span class="text-brand-accent font-mono text-xs font-bold uppercase tracking-[0.2em] mb-2 block">Direct Inquiry</span>
+            <h3 class="text-3xl font-extrabold text-white mb-6">Request a Proposal</h3>
+            <p class="text-slate-400 text-sm leading-relaxed mb-10">
+              Initiate a collaboration for custom enterprise software development, bulk material logistics, or joint venture tender execution.
             </p>
 
-            <div class="space-y-6 text-sm">
-              <a href="mailto:manosh4032@gmail.com" class="flex items-center gap-4 text-slate-300 hover:text-cyan-400 transition-colors group">
-                <div class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-cyan-500/20 transition-colors">
-                  <i data-lucide="mail" class="w-4 h-4 text-cyan-400"></i>
+            <div class="space-y-6 text-sm font-medium">
+              <a href="mailto:manosh4032@gmail.com" class="flex items-center gap-4 text-white hover:text-brand-accent transition-colors">
+                <div class="w-12 h-12 bg-brand-bg border border-brand-border flex items-center justify-center rounded-[4px]">
+                  <i data-lucide="mail" class="w-5 h-5 text-brand-accent"></i>
                 </div>
-                <span>manosh4032@gmail.com</span>
+                manosh4032@gmail.com
               </a>
-              <div class="flex items-center gap-4 text-slate-300">
-                <div class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center">
-                  <i data-lucide="map-pin" class="w-4 h-4 text-amber-400"></i>
+              <div class="flex items-center gap-4 text-white">
+                <div class="w-12 h-12 bg-brand-bg border border-brand-border flex items-center justify-center rounded-[4px]">
+                  <i data-lucide="map-pin" class="w-5 h-5 text-brand-neon"></i>
                 </div>
-                <span>Available Nationwide, Bangladesh</span>
-              </div>
-              <div class="flex items-center gap-4 text-slate-300">
-                <div class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center">
-                  <i data-lucide="check-circle" class="w-4 h-4 text-emerald-400"></i>
-                </div>
-                <span>Direct Supply & Tech Consulting</span>
+                Bangladesh (Nationwide Operation) / Whole World (Without some dedicated countries)
               </div>
             </div>
           </div>
 
-          <form class="md:col-span-3 space-y-5" onsubmit="event.preventDefault(); alert('Thank you! Your message has been noted.');">
+          <!-- Form -->
+          <form class="space-y-5" onsubmit="event.preventDefault(); alert('Inquiry Submitted Successfully.');">
             <div class="grid grid-cols-2 gap-5">
               <div class="col-span-2 sm:col-span-1">
-                <label class="block text-xs font-mono uppercase tracking-wider text-slate-500 mb-2">Name / Organization</label>
-                <input type="text" required placeholder="John Doe / Tech Inc." class="w-full px-5 py-3.5 rounded-xl bg-brand-dark/50 border border-white/10 focus:border-cyan-500 focus:bg-brand-dark focus:ring-1 focus:ring-cyan-500 transition-all outline-none text-sm text-white placeholder:text-slate-600">
+                <label class="block text-[10px] font-mono uppercase tracking-widest text-slate-500 mb-2">Organization / Name</label>
+                <input type="text" required class="w-full px-4 py-3 bg-brand-bg border border-brand-border focus:border-brand-accent outline-none text-sm text-white rounded-[4px] transition-colors">
               </div>
               <div class="col-span-2 sm:col-span-1">
-                <label class="block text-xs font-mono uppercase tracking-wider text-slate-500 mb-2">Email Address</label>
-                <input type="email" required placeholder="john@example.com" class="w-full px-5 py-3.5 rounded-xl bg-brand-dark/50 border border-white/10 focus:border-cyan-500 focus:bg-brand-dark focus:ring-1 focus:ring-cyan-500 transition-all outline-none text-sm text-white placeholder:text-slate-600">
+                <label class="block text-[10px] font-mono uppercase tracking-widest text-slate-500 mb-2">Corporate Email</label>
+                <input type="email" required class="w-full px-4 py-3 bg-brand-bg border border-brand-border focus:border-brand-accent outline-none text-sm text-white rounded-[4px] transition-colors">
               </div>
             </div>
 
             <div>
-              <label class="block text-xs font-mono uppercase tracking-wider text-slate-500 mb-2">Domain of Interest</label>
+              <label class="block text-[10px] font-mono uppercase tracking-widest text-slate-500 mb-2">Service Department</label>
               <div class="relative">
-                <select class="w-full px-5 py-3.5 rounded-xl bg-brand-dark/50 border border-white/10 focus:border-cyan-500 focus:bg-brand-dark focus:ring-1 focus:ring-cyan-500 transition-all outline-none text-sm text-white appearance-none cursor-pointer">
-                  <option class="bg-brand-dark">Web App & AI Development</option>
-                  <option class="bg-brand-dark">Bulk Material Supply (Brick/Sand/Stone)</option>
-                  <option class="bg-brand-dark">BD Road Construction Tender</option>
-                  <option class="bg-brand-dark">Event Partnership / Consulting</option>
+                <select class="w-full px-4 py-3 bg-brand-bg border border-brand-border focus:border-brand-accent outline-none text-sm text-white rounded-[4px] appearance-none cursor-pointer">
+                  <option>Software & AI Systems</option>
+                  <option>Bulk Material Supply (Civil)</option>
+                  <option>Road Construction Tender (e-GP)</option>
+                  <option>General Consulting</option>
                 </select>
-                <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none"></i>
+                <i data-lucide="chevron-down" class="w-4 h-4 text-slate-500 absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none"></i>
               </div>
             </div>
 
             <div>
-              <label class="block text-xs font-mono uppercase tracking-wider text-slate-500 mb-2">Message / Requirements</label>
-              <textarea rows="4" required placeholder="Project specs, tonnage requirement, or software scope..." class="w-full px-5 py-3.5 rounded-xl bg-brand-dark/50 border border-white/10 focus:border-cyan-500 focus:bg-brand-dark focus:ring-1 focus:ring-cyan-500 transition-all outline-none text-sm text-white placeholder:text-slate-600 resize-none"></textarea>
+              <label class="block text-[10px] font-mono uppercase tracking-widest text-slate-500 mb-2">Project Specifications</label>
+              <textarea rows="4" required class="w-full px-4 py-3 bg-brand-bg border border-brand-border focus:border-brand-accent outline-none text-sm text-white rounded-[4px] resize-none transition-colors"></textarea>
             </div>
 
-            <button type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-400 hover:to-teal-400 text-brand-dark font-bold text-sm transition-all shadow-lg hover:shadow-cyan-500/25 flex items-center justify-center gap-2">
-              Send Proposal Request <i data-lucide="send" class="w-4 h-4"></i>
+            <button type="submit" class="w-full py-4 bg-brand-accent hover:bg-brand-accentHover text-white font-bold text-sm transition-all rounded-[4px] flex items-center justify-center gap-2 mt-2">
+              Submit Inquiry <i data-lucide="arrow-right" class="w-4 h-4"></i>
             </button>
           </form>
         </div>
@@ -527,21 +508,23 @@
   </main>
 
   <!-- Footer -->
-  <footer class="border-t border-white/5 bg-[#03050a] py-10 relative z-10 mt-10">
+  <footer class="border-t border-brand-border bg-[#03060c] py-12 relative z-10">
     <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
-      <div class="flex items-center gap-3 opacity-50 hover:opacity-100 transition-opacity">
-        <div class="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center font-mono font-bold text-xs text-white">
-          MG
-        </div>
-        <p class="text-xs text-slate-400">© 2026 Manosh Ghosh. All rights reserved.</p>
+      
+      <div class="flex items-center gap-3">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#475569" stroke-width="2">
+          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+        </svg>
+        <p class="text-xs text-slate-500 font-mono tracking-wider uppercase">© 2026 Manosh Ghosh Corp.</p>
       </div>
       
-      <div class="flex flex-wrap justify-center gap-6 text-sm font-medium text-slate-500">
-        <a href="#hero" class="hover:text-cyan-400 transition-colors">Back to Top</a>
-        <a href="#projects" class="hover:text-cyan-400 transition-colors">Projects</a>
-        <a href="#tech-ventures" class="hover:text-cyan-400 transition-colors">Tech Track</a>
-        <a href="#industrial" class="hover:text-amber-400 transition-colors">Civil Track</a>
+      <div class="flex flex-wrap justify-center gap-8 text-xs font-mono font-bold tracking-widest uppercase text-slate-600">
+        <a href="#hero" class="hover:text-brand-accent transition-colors">Top</a>
+        <a href="#projects" class="hover:text-brand-accent transition-colors">Architecture</a>
+        <a href="#solutions" class="hover:text-brand-accent transition-colors">Tech Track</a>
+        <a href="#infrastructure" class="hover:text-brand-neon transition-colors">Civil Track</a>
       </div>
+      
     </div>
   </footer>
 
@@ -555,8 +538,8 @@
     AOS.init({
       once: true,
       offset: 50,
-      duration: 800,
-      easing: 'ease-out-cubic',
+      duration: 600,
+      easing: 'ease-in-out',
     });
   </script>
 </body>
