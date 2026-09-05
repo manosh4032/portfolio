@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manosh Ghosh | Developer, AI Innovator & Contractor</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            brand: {
+              cyan: '#06b6d4',
+              amber: '#f59e0b',
+              emerald: '#10b981',
+              dark: '#0a0f1d',
+              card: '#111827',
+              border: '#1f2937'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .glass-card {
+      background: rgba(17, 24, 39, 0.7);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .glow-cyan {
+      box-shadow: 0 0 40px -10px rgba(6, 182, 212, 0.25);
+    }
+    .glow-amber {
+      box-shadow: 0 0 40px -10px rgba(245, 158, 11, 0.25);
+    }
+  </style>
+</head>
+<body class="bg-brand-dark text-slate-100 font-sans antialiased selection:bg-cyan-500 selection:text-black">
+
+  <!-- Ambient Background Gradients -->
+  <div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
+    <div class="absolute -top-40 -left-40 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl"></div>
+    <div class="absolute top-1/3 -right-40 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl"></div>
+    <div class="absolute -bottom-40 left-1/3 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl"></div>
+  </div>
+
+  <!-- Navigation -->
+  <header class="fixed top-0 inset-x-0 z-50 glass-card border-b border-slate-800/80">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <a href="#hero" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-500 to-amber-500 p-[1px]">
+          <div class="w-full h-full bg-slate-950 rounded-[11px] flex items-center justify-center font-mono font-bold text-lg text-white">
+            MG
+          </div>
+        </div>
+        <div>
+          <span class="font-bold text-base tracking-tight block">Manosh Ghosh</span>
+          <span class="text-[10px] uppercase font-mono tracking-widest text-cyan-400">Tech × Infrastructure</span>
+        </div>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-400">
+        <a href="#about" class="hover:text-cyan-400 transition-colors">Vision</a>
+        <a href="#tech-ventures" class="hover:text-cyan-400 transition-colors">Software & AI</a>
+        <a href="#industrial" class="hover:text-amber-400 transition-colors">Civil & Aggregates</a>
+        <a href="#contact" class="px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-100 transition-all border border-slate-700">
+          Get in Touch
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="relative z-10 max-w-7xl mx-auto px-6 pt-32 pb-24">
+    
+    <!-- Hero Section -->
+    <section id="hero" class="pt-12 pb-20 grid lg:grid-cols-12 gap-12 items-center">
+      <div class="lg:col-span-7 space-y-6">
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full glass-card border border-cyan-500/30 text-cyan-300 text-xs font-mono">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          Available for High-Scale Systems & Strategic Contracts
+        </div>
+
+        <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight leading-[1.1]">
+          Architecting Code. <br>
+          <span class="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-teal-300 to-amber-400">
+            Constructing Foundations.
+          </span>
+        </h1>
+
+        <p class="text-slate-400 text-lg leading-relaxed max-w-2xl">
+          I am <strong class="text-white">Manosh Ghosh</strong> — a Web Application Developer, AI Designer, and System Innovator bridging the digital realm of intelligent software with the physical realities of road infrastructure and material logistics in Bangladesh.
+        </p>
+
+        <!-- Quick CTAs -->
+        <div class="flex flex-wrap gap-4 pt-2">
+          <a href="#tech-ventures" class="px-6 py-3 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold transition-all flex items-center gap-2 glow-cyan shadow-lg">
+            <i data-lucide="code-2" class="w-4 h-4"></i> Explore Tech Solutions
+          </a>
+          <a href="#industrial" class="px-6 py-3 rounded-xl glass-card hover:bg-slate-800 text-slate-200 font-semibold transition-all flex items-center gap-2 border border-amber-500/30 glow-amber">
+            <i data-lucide="hard-hat" class="w-4 h-4 text-amber-400"></i> Civil Tenders & Supply
+          </a>
+        </div>
+
+        <!-- Metric Badges -->
+        <div class="grid grid-cols-3 gap-4 pt-6 border-t border-slate-800">
+          <div>
+            <span class="font-mono text-2xl font-bold text-cyan-400">100%</span>
+            <p class="text-xs text-slate-400 mt-1">e-GP Tender Competence</p>
+          </div>
+          <div>
+            <span class="font-mono text-2xl font-bold text-amber-400">Multi-Ton</span>
+            <p class="text-xs text-slate-400 mt-1">Aggregate Logistics</p>
+          </div>
+          <div>
+            <span class="font-mono text-2xl font-bold text-emerald-400">Full-Stack</span>
+            <p class="text-xs text-slate-400 mt-1">AI & Web Architecture</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero Visual Card -->
+      <div class="lg:col-span-5">
+        <div class="glass-card p-8 rounded-3xl border border-slate-800 relative overflow-hidden shadow-2xl">
+          <div class="space-y-6">
+            <!-- Software pill -->
+            <div class="p-4 rounded-2xl bg-slate-900/80 border border-cyan-500/20 flex items-start gap-4">
+              <div class="p-3 bg-cyan-500/10 text-cyan-400 rounded-xl">
+                <i data-lucide="cpu" class="w-6 h-6"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-slate-200">System & AI Innovation</h4>
+                <p class="text-xs text-slate-400 mt-1">Real-time web applications, automated operational workflows, and domain-tuned AI models.</p>
+              </div>
+            </div>
+
+            <!-- Material pill -->
+            <div class="p-4 rounded-2xl bg-slate-900/80 border border-amber-500/20 flex items-start gap-4">
+              <div class="p-3 bg-amber-500/10 text-amber-400 rounded-xl">
+                <i data-lucide="truck" class="w-6 h-6"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-slate-200">Heavy Material Logistics</h4>
+                <p class="text-xs text-slate-400 mt-1">Direct supply networks for Premium Auto Bricks, Coarse Sand, and Stone / Torsha Aggregates.</p>
+              </div>
+            </div>
+
+            <!-- Road pill -->
+            <div class="p-4 rounded-2xl bg-slate-900/80 border border-emerald-500/20 flex items-start gap-4">
+              <div class="p-3 bg-emerald-500/10 text-emerald-400 rounded-xl">
+                <i data-lucide="git-branch" class="w-6 h-6"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-slate-200">Road Infrastructure Tenders</h4>
+                <p class="text-xs text-slate-400 mt-1">Active participant in Bangladesh road construction, civil engineering, and government e-GP works.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 1: Software & AI Innovation -->
+    <section id="tech-ventures" class="py-16 border-t border-slate-800">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+        <div>
+          <span class="text-cyan-400 font-mono text-xs uppercase tracking-wider">Engineering Track 01</span>
+          <h2 class="text-3xl font-bold mt-1 text-white">Web Applications & AI Systems</h2>
+        </div>
+        <p class="text-slate-400 text-sm max-w-md">
+          Designing resilient digital architectures that solve operational bottlenecks, streamline data, and deliver intuitive user interfaces.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        <!-- Tech Card 1 -->
+        <div class="glass-card p-6 rounded-2xl border border-slate-800 hover:border-cyan-500/40 transition-all group">
+          <div class="w-12 h-12 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+            <i data-lucide="layout" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-2">Modern Web Applications</h3>
+          <p class="text-slate-400 text-sm leading-relaxed mb-4">
+            Responsive, scalable single-page and progressive web apps engineered with modern frontend frameworks and robust backend microservices.
+          </p>
+          <div class="flex flex-wrap gap-2 text-xs font-mono text-cyan-300">
+            <span class="px-2 py-1 bg-cyan-950/60 rounded">React/Next.js</span>
+            <span class="px-2 py-1 bg-cyan-950/60 rounded">Node.js</span>
+            <span class="px-2 py-1 bg-cyan-950/60 rounded">Tailwind</span>
+          </div>
+        </div>
+
+        <!-- Tech Card 2 -->
+        <div class="glass-card p-6 rounded-2xl border border-slate-800 hover:border-cyan-500/40 transition-all group">
+          <div class="w-12 h-12 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+            <i data-lucide="sparkles" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-2">AI Design & Automation</h3>
+          <p class="text-slate-400 text-sm leading-relaxed mb-4">
+            Integrating custom LLM pipelines, autonomous agents, and smart heuristics to automate decision-making and enhance UX interfaces.
+          </p>
+          <div class="flex flex-wrap gap-2 text-xs font-mono text-cyan-300">
+            <span class="px-2 py-1 bg-cyan-950/60 rounded">Custom Agents</span>
+            <span class="px-2 py-1 bg-cyan-950/60 rounded">NLP Pipelines</span>
+            <span class="px-2 py-1 bg-cyan-950/60 rounded">Workflow Automation</span>
+          </div>
+        </div>
+
+        <!-- Tech Card 3 -->
+        <div class="glass-card p-6 rounded-2xl border border-slate-800 hover:border-cyan-500/40 transition-all group">
+          <div class="w-12 h-12 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+            <i data-lucide="layers" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-2">Industrial ERP & Logistics Tools</h3>
+          <p class="text-slate-400 text-sm leading-relaxed mb-4">
+            Custom-built internal systems designed specifically for material tracking, fleet management, tender estimation, and supply chain accountability.
+          </p>
+          <div class="flex flex-wrap gap-2 text-xs font-mono text-cyan-300">
+            <span class="px-2 py-1 bg-cyan-950/60 rounded">Fleet Tracking</span>
+            <span class="px-2 py-1 bg-cyan-950/60 rounded">e-GP Analytics</span>
+            <span class="px-2 py-1 bg-cyan-950/60 rounded">Inventory Systems</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: Construction Materials & Road Tenders -->
+    <section id="industrial" class="py-16 border-t border-slate-800">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+        <div>
+          <span class="text-amber-400 font-mono text-xs uppercase tracking-wider">Enterprise Track 02</span>
+          <h2 class="text-3xl font-bold mt-1 text-white">Civil Infrastructure & Material Supply</h2>
+        </div>
+        <p class="text-slate-400 text-sm max-w-md">
+          Providing high-grade raw aggregates and executing government and municipal road construction contracts across Bangladesh.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Aggregate: Bricks -->
+        <div class="glass-card p-6 rounded-2xl border border-slate-800 hover:border-amber-500/40 transition-all">
+          <div class="w-10 h-10 rounded-lg bg-amber-500/10 text-amber-400 flex items-center justify-center mb-4 font-mono font-bold">
+            01
+          </div>
+          <h4 class="text-lg font-bold text-slate-100">Auto & First-Class Bricks</h4>
+          <p class="text-xs text-slate-400 mt-2 leading-relaxed">
+            High-compressive strength automatic & manual bricks suited for bridge abutments, multi-story structural foundations, and road base layers.
+          </p>
+          <div class="mt-4 pt-4 border-t border-slate-800/80 text-[11px] font-mono text-amber-300">
+            Bulk Direct Sourcing
+          </div>
+        </div>
+
+        <!-- Aggregate: Sand -->
+        <div class="glass-card p-6 rounded-2xl border border-slate-800 hover:border-amber-500/40 transition-all">
+          <div class="w-10 h-10 rounded-lg bg-amber-500/10 text-amber-400 flex items-center justify-center mb-4 font-mono font-bold">
+            02
+          </div>
+          <h4 class="text-lg font-bold text-slate-100">Sand (FM 1.5 - 2.5)</h4>
+          <p class="text-xs text-slate-400 mt-2 leading-relaxed">
+            Screened riverbed filling sand and coarse Sylhet sand for high-grade RCC casting, plastering, and sub-base road filling.
+          </p>
+          <div class="mt-4 pt-4 border-t border-slate-800/80 text-[11px] font-mono text-amber-300">
+            Certified Fineness Modulus
+          </div>
+        </div>
+
+        <!-- Aggregate: Stone & Torsha -->
+        <div class="glass-card p-6 rounded-2xl border border-slate-800 hover:border-amber-500/40 transition-all">
+          <div class="w-10 h-10 rounded-lg bg-amber-500/10 text-amber-400 flex items-center justify-center mb-4 font-mono font-bold">
+            03
+          </div>
+          <h4 class="text-lg font-bold text-slate-100">Stone Chips & Torsha</h4>
+          <p class="text-xs text-slate-400 mt-2 leading-relaxed">
+            Imported and crushed stone aggregate, including heavy Torsha river stone, calibrated for bituminous carpet road surfacing and heavy concrete work.
+          </p>
+          <div class="mt-4 pt-4 border-t border-slate-800/80 text-[11px] font-mono text-amber-300">
+            Graded Size Variations
+          </div>
+        </div>
+
+        <!-- Tender Contracts -->
+        <div class="glass-card p-6 rounded-2xl border border-slate-800 hover:border-amber-500/40 transition-all">
+          <div class="w-10 h-10 rounded-lg bg-amber-500/10 text-amber-400 flex items-center justify-center mb-4 font-mono font-bold">
+            04
+          </div>
+          <h4 class="text-lg font-bold text-slate-100">BD Road Construction Tenders</h4>
+          <p class="text-xs text-slate-400 mt-2 leading-relaxed">
+            End-to-end execution of government and private civil road tenders: earthwork preparation, sub-base compaction, WBM, and asphalt macadam.
+          </p>
+          <div class="mt-4 pt-4 border-t border-slate-800/80 text-[11px] font-mono text-amber-300">
+            e-GP Compliant Execution
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: Contact & Proposal Form -->
+    <section id="contact" class="py-16 border-t border-slate-800">
+      <div class="glass-card rounded-3xl p-8 md:p-12 border border-slate-800 max-w-4xl mx-auto relative overflow-hidden">
+        <div class="grid md:grid-cols-2 gap-8">
+          <div>
+            <span class="text-cyan-400 font-mono text-xs uppercase tracking-wider">Connect Directly</span>
+            <h3 class="text-2xl font-bold text-white mt-1">Initiate a Collaboration</h3>
+            <p class="text-slate-400 text-sm mt-3 leading-relaxed">
+              Whether you need an intelligent web platform, an automated system design, bulk construction raw materials, or joint venture tender execution in Bangladesh — let's connect.
+            </p>
+
+            <div class="mt-8 space-y-4 text-sm">
+              <div class="flex items-center gap-3 text-slate-300">
+                <i data-lucide="mail" class="w-5 h-5 text-cyan-400"></i>
+                <span>manosh4032@gmail.com</span>
+              </div>
+              <div class="flex items-center gap-3 text-slate-300">
+                <i data-lucide="map-pin" class="w-5 h-5 text-amber-400"></i>
+                <span>Whole BD / Wherever you need in the world, Bangladesh</span>
+              </div>
+              <div class="flex items-center gap-3 text-slate-300">
+                <i data-lucide="check-circle" class="w-5 h-5 text-emerald-400"></i>
+                <span>Direct Supply & Tender Operations</span>
+              </div>
+            </div>
+          </div>
+
+          <form class="space-y-4" onsubmit="event.preventDefault(); alert('Thank you! Your message has been noted.');">
+            <div>
+              <label class="block text-xs font-mono uppercase text-slate-400 mb-1">Your Name / Organization</label>
+              <input type="text" required placeholder="e.g. Infrastructure Partner / Tech Lead" class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-800 focus:border-cyan-500 focus:outline-none text-sm text-white">
+            </div>
+
+            <div>
+              <label class="block text-xs font-mono uppercase text-slate-400 mb-1">Domain of Interest</label>
+              <select class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-800 focus:border-cyan-500 focus:outline-none text-sm text-white">
+                <option>Web App & AI Development</option>
+                <option>Bulk Material Supply (Brick/Sand/Stone/Torsha)</option>
+                <option>BD Road Construction Tender Joint Venture</option>
+                <option>General Innovation & Consulting</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-xs font-mono uppercase text-slate-400 mb-1">Message / Requirements</label>
+              <textarea rows="3" required placeholder="Project specs, tonnage requirement, or software scope..." class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-800 focus:border-cyan-500 focus:outline-none text-sm text-white"></textarea>
+            </div>
+
+            <button type="submit" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-400 hover:to-teal-400 text-slate-950 font-bold text-sm transition-all shadow-lg">
+              Send Proposal Request
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-800 bg-slate-950 py-8 text-center text-xs text-slate-500 relative z-10">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row justify-between items-center gap-4">
+      <p>© 2026 Manosh Ghosh. Systems, Software & Infrastructure Solutions.</p>
+      <div class="flex gap-6">
+        <a href="#hero" class="hover:text-slate-300 transition-colors">Back to Top</a>
+        <a href="#tech-ventures" class="hover:text-slate-300 transition-colors">Tech Track</a>
+        <a href="#industrial" class="hover:text-slate-300 transition-colors">Civil Track</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Initialize Lucide Ic
